@@ -6,3 +6,4 @@
 + `python3 -c "$(wget https://raw.githubusercontent.com/nphard001/starter/master/debian.py -O -)"`
 + `python3 -c "$(wget https://raw.githubusercontent.com/nphard001/starter/master/debian.py --quiet -O -)"`
 
+## Check python3==3.5.3
