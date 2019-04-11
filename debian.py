@@ -39,10 +39,11 @@ pkg_list = [
 cmd_list = [
     "sudo apt-get update",
 ]
-cmd_list.extend([
-    "sudo apt-get install -y %s"%pkg
-    for pkg in pkg_list
-])
+# cmd_list.extend([
+#     "sudo apt-get install -y %s"%pkg
+#     for pkg in pkg_list
+# ])
+cmd_list.append("sudo apt-get install -y %s"%(" ".join(pkg_list)))
 rc_total = 0
 for cmd in cmd_list:
     st = now()
