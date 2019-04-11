@@ -1,0 +1,4 @@
+*indev*
+*tmp*
+*.ipynb
+*__pycache__*
