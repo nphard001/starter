@@ -7,3 +7,4 @@
 + `python3 -c "$(wget https://raw.githubusercontent.com/nphard001/starter/master/debian.py --quiet -O -)"`
 
 ## Check python3==3.5.3
+sh -c "$(wget https://raw.githubusercontent.com/nphard001/starter/master/check353.sh -O -)"

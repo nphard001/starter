@@ -1,4 +1,4 @@
-test (\
+(test \
 "$(python3 --version)"\
 =\
 "Python 3.5.3"\
