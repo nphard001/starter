@@ -11,3 +11,11 @@ sh -c "$(wget https://raw.githubusercontent.com/nphard001/starter/master/check35
 `
 python3 -c "$(wget https://raw.githubusercontent.com/nphard001/starter/master/debian.py --no-cache --quiet -O -)"
 `
+
+## (ALL)
+`
+python3 -c "$(wget https://raw.githubusercontent.com/nphard001/starter/master/debian.py --no-cache --quiet -O -)"
+`
+`
+python3 -c "$(wget https://raw.githubusercontent.com/nphard001/starter/master/ohmyzsh.py --no-cache --quiet -O -)"
+`
