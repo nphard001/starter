@@ -13,9 +13,12 @@ python3 -c "$(wget https://raw.githubusercontent.com/nphard001/starter/master/de
 `
 
 ## (ALL)
-`
++ `
 python3 -c "$(wget https://raw.githubusercontent.com/nphard001/starter/master/debian.py --no-cache --quiet -O -)"
 `
-`
++ `
 python3 -c "$(wget https://raw.githubusercontent.com/nphard001/starter/master/ohmyzsh.py --no-cache --quiet -O -)"
+`
++ `
+python3 -c "$(wget https://raw.githubusercontent.com/nphard001/starter/master/pyenv.py --no-cache --quiet -O -)"
 `
