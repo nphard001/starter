@@ -8,13 +8,17 @@ run('git clone https://github.com/pyenv/pyenv.git ~/.pyenv')
 run('sudo ln -s ~/.pyenv/bin/pyenv /usr/local/bin/pyenv')
 run('sudo ln -s ~/.pyenv/bin/pyenv /usr/local/sbin/pyenv')
 run('git clone https://github.com/pyenv/pyenv-virtualenv.git $(pyenv root)/plugins/pyenv-virtualenv')
+
 run('eval "$(pyenv init -)"')
 run('eval "$(pyenv virtualenv-init -)"')
 run('pyenv install miniconda3-4.3.30')
+run('pyenv global miniconda3-4.3.30')
+run('pyenv rehash')
+run('pyenv exec conda update conda -y')
+
 run('pyenv virtualenv miniconda3-4.3.30 mini368')
 run('pyenv global mini368')
-run('eval "$(pyenv init -)"')
-run('eval "$(pyenv virtualenv-init -)"')
+run('pyenv rehash')
 
 
 r"""
