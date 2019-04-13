@@ -12,19 +12,12 @@ def run(cmd):
     print(report[-1], file=sys.stderr)
     return rc
 
-run('git clone https://github.com/hoytech/vmtouch.git /tmp/build_vmtouch')
-run('cd /tmp/build_vmtouch && make && sudo make install')
-
-run('pip install mako')
-run('pip install django')
-run('pip install django-sslserver')
-run('CC=/usr/bin/clang pip install uwsgi')
-
-run('pip install sympy')
-run('pip install pandas')
-run('pip install lightgbm')
-run('pip install tensorflow tensorflow-gpu')
-run('pip install torch torchvision')
+path_key = '~/.ssh/pkg368key.key'
+path_pem = '~/.ssh/pkg368cert.pem'
+run(r'openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout {path_key} -out {path_pem} -subj /C=XD'.format(**locals()))
+run('pip install jupyter')
+run('pip install jupyter_contrib_nbextensions')
+run('pip install jsonschema') # for jupyter extensions
 
 # update /usr/local/bin
 run('eval "$(pyenv init -)"')
@@ -32,6 +25,8 @@ run('pyenv rehash')
 run('sudo ln -s ~/.pyenv/shims/* /usr/local/bin/')
 
 # new bin setups
+run('jupyter nbextensions_configurator enable --user')
+
 
 print('================================', file=sys.stderr)
 print('==============DONE==============', file=sys.stderr)

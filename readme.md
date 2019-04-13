@@ -25,3 +25,6 @@ python3 -c "$(wget https://raw.githubusercontent.com/nphard001/starter/master/py
 + `
 python3 -c "$(wget https://raw.githubusercontent.com/nphard001/starter/master/pkg368.py --no-cache --quiet -O -)"
 `
++ `
+python3 -c "$(wget https://raw.githubusercontent.com/nphard001/starter/master/pkg368_jupyter.py --no-cache --quiet -O -)"
+`

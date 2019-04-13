@@ -34,6 +34,7 @@ pkg_list = [
     "libreadline-dev",               # for SoftEth
     "libncurses5-dev",               # for SoftEth
     "libncursesw5-dev",              # for SoftEth
+    "clang",                         # use it when gcc fail, like `pip install uwsgi`
     # "linux-headers-4.9.0-8-amd64",   # (kernel-tree) for gcp nvidia driver
 ]
 cmd_list = [

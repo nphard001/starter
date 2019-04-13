@@ -12,5 +12,5 @@ run('pyenv install miniconda3-4.3.30')
 run('pyenv global miniconda3-4.3.30')
 run('pyenv rehash')
 run('pyenv exec conda update conda -y')
-run('sudo ln -s ~/.pyenv/shims/* /usr/local/bin/')
+run('sudo ln -fvs ~/.pyenv/shims/* /usr/local/bin/')
 
