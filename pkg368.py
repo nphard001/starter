@@ -8,7 +8,8 @@ def run(cmd):
     st = now()
     print('[run]', cmd, file=sys.stderr)
     rc = subprocess.run(cmd, shell=True).returncode
-    report.append('[run: %2d] (%10.2f) %48s'%(rc, now()-st, cmd))
+    report.append('[run:%4d] (%10.2f) %s'%(rc, now()-st, cmd))
+    print(report[-1])
     return rc
 
 run('git clone https://github.com/hoytech/vmtouch.git /tmp/build_vmtouch')
@@ -23,7 +24,10 @@ run('pip install mako')
 run('pip install django')
 run('pip install django-sslserver')
 
-
+run('pip install sympy')
+run('pip install lightgbm')
+run('pip install tensorflow tensorflow-gpu')
+run('pip install torch torchvision')
 
 run('eval "$(pyenv init -)"')
 run('pyenv rehash')
