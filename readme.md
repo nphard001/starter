@@ -13,7 +13,9 @@ python3 -c "$(wget https://raw.githubusercontent.com/nphard001/starter/master/de
 `
 
 ## Install ALL
-
+`
+python3 -c "$(wget https://raw.githubusercontent.com/nphard001/starter/master/all.py --no-cache --quiet -O -)"
+`
 
 ## The "ALL" List
 + `

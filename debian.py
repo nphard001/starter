@@ -19,9 +19,11 @@ pkg_list = [
     "make",                          
     "vim",                           
     "git",                           
+    "tree",                          # take a glimpse in directories
     "g++",                           # may fail?
     "gdb",                           # may fail?
     "cmake",                         # may fail?
+    "clang",                         # use it when gcc fail, like `pip install uwsgi`
     "bzip2",                         # unzip python things
     "unzip",                         # unzip python things
     "strace",                        # systemcall trace
@@ -33,7 +35,6 @@ pkg_list = [
     "libreadline-dev",               # for SoftEth
     "libncurses5-dev",               # for SoftEth
     "libncursesw5-dev",              # for SoftEth
-    "clang",                         # use it when gcc fail, like `pip install uwsgi`
     "linux-headers-4.9.0-8-amd64",   # (kernel-tree) for gcp nvidia driver
 ]
 cmd_list = [

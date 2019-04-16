@@ -26,6 +26,17 @@ run('pip install lightgbm')
 run('pip install tensorflow tensorflow-gpu')
 run('pip install torch torchvision')
 
+# ADL-HW2 uses
+run('pip install cython')
+run('pip install fastText')
+run('pip install tqdm')
+run('pip install python-box')
+run('pip install pyyaml')
+run('pip install ipdb')
+run('pip install SpaCy')
+run('pip install NLTK')
+
+
 # update /usr/local/bin
 run('eval "$(pyenv init -)"')
 run('pyenv rehash')
