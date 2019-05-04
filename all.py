@@ -1,3 +1,7 @@
+r'''
+sudo apt-get install -y tmux
+tmux new -s install
+'''
 import os, sys, json
 import datetime
 import subprocess
@@ -13,7 +17,7 @@ def run(cmd):
     return rc
 # ================================================================
 run('python3 -c "$(wget https://raw.githubusercontent.com/nphard001/starter/master/debian.py --no-cache --quiet -O -)" > debian_stdout.json')
-run('python3 -c "$(wget https://raw.githubusercontent.com/nphard001/starter/master/ohmyzsh.py --no-cache --quiet -O -)" > ohmyzsh_stdout.json')
+# run('python3 -c "$(wget https://raw.githubusercontent.com/nphard001/starter/master/ohmyzsh.py --no-cache --quiet -O -)" > ohmyzsh_stdout.json')
 run('python3 -c "$(wget https://raw.githubusercontent.com/nphard001/starter/master/pyenv.py --no-cache --quiet -O -)" > pyenv_stdout.json')
 run('python3 -c "$(wget https://raw.githubusercontent.com/nphard001/starter/master/pkg368.py --no-cache --quiet -O -)" > pkg368_stdout.json')
 run('python3 -c "$(wget https://raw.githubusercontent.com/nphard001/starter/master/pkg368_jupyter.py --no-cache --quiet -O -)" > pkg368_jupyter_stdout.json')

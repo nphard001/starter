@@ -24,6 +24,7 @@ pkg_list = [
     "gdb",                           # may fail?
     "cmake",                         # may fail?
     "clang",                         # use it when gcc fail, like `pip install uwsgi`
+    "xauth",                         # X11 display
     "bzip2",                         # unzip python things
     "unzip",                         # unzip python things
     "strace",                        # systemcall trace
@@ -36,6 +37,7 @@ pkg_list = [
     "libncurses5-dev",               # for SoftEth
     "libncursesw5-dev",              # for SoftEth
     "linux-headers-4.9.0-8-amd64",   # (kernel-tree) for gcp nvidia driver
+    # "libav-tools",                   # adl3 # too many dependencies
 ]
 cmd_list = [
     "sudo apt-get update",

@@ -19,6 +19,8 @@ run('pip install mako')
 run('pip install django')
 run('pip install django-sslserver')
 run('CC=/usr/bin/clang pip install uwsgi')
+# (macbook) more specfially the openssl path
+# run('CFLAGS="-I/usr/local/opt/openssl/include" LDFLAGS="-L/usr/local/opt/openssl/lib" CC=/usr/bin/clang pip install uwsgi')
 
 run('pip install sympy')
 run('pip install pandas')
@@ -38,9 +40,11 @@ run('pip install NLTK')
 
 
 # update /usr/local/bin
+# (for root) You can do the same thing in /usr/local/sbin if needed
 run('eval "$(pyenv init -)"')
 run('pyenv rehash')
 run('sudo ln -s ~/.pyenv/shims/* /usr/local/bin/')
+# sudo ln -s /home/cnlab/.pyenv/versions/miniconda3-4.3.30/bin/* /usr/local/bin/
 
 # new bin setups
 
