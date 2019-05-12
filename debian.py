@@ -29,6 +29,7 @@ pkg_list = [
     "unzip",                         # unzip python things
     "strace",                        # systemcall trace
     "traceroute",                    # network test internal IP
+    "lsof",                          # debug open files
     "nload",                         # network usage
     "zlib1g-dev",                    # ubuntu python365
     "libssl-dev",                    # for SoftEth, aka openssl-devel

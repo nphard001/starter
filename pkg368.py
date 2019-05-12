@@ -22,6 +22,7 @@ run('CC=/usr/bin/clang pip install uwsgi')
 # (macbook) more specfially the openssl path
 # run('CFLAGS="-I/usr/local/opt/openssl/include" LDFLAGS="-L/usr/local/opt/openssl/lib" CC=/usr/bin/clang pip install uwsgi')
 
+run('pip install psutil')
 run('pip install sympy')
 run('pip install pandas')
 run('pip install lightgbm')
