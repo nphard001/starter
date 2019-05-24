@@ -17,8 +17,8 @@ key_public = os.path.join(key_dir, symbol+'.pub')
 
 # remote authorized_keys
 run(f'ssh-keygen -f {key_private} -t ecdsa -b 521')
-run(f'scp {key_public} {user_at_host}:~/.ssh')
-run(f'ssh {user_at_host} "cat {key_public} >> ~/.ssh/authorized_keys"')
+run(f'scp {key_public} {user_at_host}:~/.ssh_key_tmp')
+run(f'ssh {user_at_host} "mkdir ~/.ssh && cat ~/.ssh_key_tmp >> ~/.ssh/authorized_keys"')
 
 # local config file
 lst2 = user_at_host.split('@')

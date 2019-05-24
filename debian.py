@@ -41,6 +41,7 @@ pkg_list = [
     # "libav-tools",                   # adl3 # too many dependencies
 ]
 cmd_list = [
+    "apt install sudo", # first you have to "su", um...
     "sudo apt-get update",
 ]
 cmd_list.extend([
