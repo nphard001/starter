@@ -25,19 +25,21 @@ run('CC=/usr/bin/clang pip install uwsgi')
 run('pip install psutil')
 run('pip install sympy')
 run('pip install pandas')
-run('pip install lightgbm')
-run('pip install tensorflow tensorflow-gpu')
-run('pip install torch torchvision')
+
+# too big, install it yourself
+# run('pip install lightgbm')
+# run('pip install tensorflow tensorflow-gpu')
+# run('pip install torch torchvision')
 
 # ADL-HW2 uses
-run('pip install cython')
-run('pip install fastText')
-run('pip install tqdm')
-run('pip install python-box')
-run('pip install pyyaml')
-run('pip install ipdb')
-run('pip install SpaCy')
-run('pip install NLTK')
+# run('pip install cython')
+# run('pip install fastText')
+# run('pip install tqdm')
+# run('pip install python-box')
+# run('pip install pyyaml')
+# run('pip install ipdb')
+# run('pip install SpaCy')
+# run('pip install NLTK')
 
 
 # update /usr/local/bin

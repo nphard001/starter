@@ -17,6 +17,7 @@ path_pem = '~/.ssh/pkg368cert.pem'
 run(r'openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout {path_key} -out {path_pem} -subj /C=XD'.format(**locals()))
 run('pip install jupyter')
 run('pip install jupyter_contrib_nbextensions')
+run('jupyter contrib nbextension install --user')
 run('pip install jsonschema') # for jupyter extensions
 
 # update /usr/local/bin
