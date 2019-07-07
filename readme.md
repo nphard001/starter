@@ -8,6 +8,10 @@
 sh -c "$(wget https://raw.githubusercontent.com/nphard001/starter/master/nopasswd.sh --no-cache --quiet -O -)" $USERNAME
 `
 + ensure you feed the right username
++ qtwu version
+    + `
+sh -c "$(wget https://raw.githubusercontent.com/nphard001/starter/master/nopasswd_qtwu.sh --no-cache --quiet -O -)"
+`
 
 ## Check python3==3.5.3
 `
