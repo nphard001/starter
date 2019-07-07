@@ -37,7 +37,7 @@ pkg_list = [
     "libreadline-dev",               # for SoftEth
     "libncurses5-dev",               # for SoftEth
     "libncursesw5-dev",              # for SoftEth
-    "linux-headers-4.9.0-8-amd64",   # (kernel-tree) for gcp nvidia driver
+    # "linux-headers-4.9.0-8-amd64",   # (kernel-tree) for gcp nvidia driver
     # "libav-tools",                   # adl3 # too many dependencies
 ]
 cmd_list = [

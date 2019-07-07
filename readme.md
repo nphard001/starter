@@ -2,6 +2,12 @@
 > inspired by https://github.com/robbyrussell/oh-my-zsh
 > + `sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"`
 
+
+## Add user to sudoers with `NOPASSWD`
+`
+sh -c "$(wget https://raw.githubusercontent.com/nphard001/starter/master/nopasswd.sh --no-cache --quiet -O -) YOUR_USERNAME"
+`
+
 ## Check python3==3.5.3
 `
 sh -c "$(wget https://raw.githubusercontent.com/nphard001/starter/master/check353.sh --no-cache --quiet -O -)"
