@@ -5,8 +5,9 @@
 
 ## Add user to sudoers with `NOPASSWD`
 `
-sh -c "$(wget https://raw.githubusercontent.com/nphard001/starter/master/nopasswd.sh --no-cache --quiet -O -) YOUR_USERNAME"
+sh -c "$(wget https://raw.githubusercontent.com/nphard001/starter/master/nopasswd.sh --no-cache --quiet -O -)" $USERNAME
 `
++ ensure you feed the right username
 
 ## Check python3==3.5.3
 `
