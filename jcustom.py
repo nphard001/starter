@@ -1,16 +1,16 @@
 import os, sys, json, inspect
 import datetime
 import subprocess
-if os.system('ls /home/qtwu')==0:
+if os.system('ls /home')==0:  # linux
     _JupyterHome = lambda *args: os.path.join(
-        f'/home/qtwu/.jupyter', *args)
+        f'~/.jupyter', *args)
     _JupyterShare = lambda *args: os.path.join(
-        f'/home/qtwu/.local/share/jupyter/', *args)
-else:
+        f'~/.local/share/jupyter/', *args)
+else:  # osx
     _JupyterHome = lambda *args: os.path.join(
-        f'/Users/qtwu/.jupyter', *args)
+        f'~/.jupyter', *args)
     _JupyterShare = lambda *args: os.path.join(
-        f'/Users/qtwu/Library/Jupyter', *args)
+        f'~/Library/Jupyter', *args)
 def run(cmd):
     st = datetime.datetime.now().timestamp()
     print('[run]', cmd, file=sys.stderr)

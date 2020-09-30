@@ -26,6 +26,8 @@ run('sudo mkdir /active')
 run('sudo mkdir /tmp2')
 run('sudo mkdir /dat')
 run('echo "/active" > ~/.pyenv/versions/miniconda3-4.3.30/lib/python3.6/site-packages/qtwu.pth')
+
+# sudo -u root -i tmux new-session -s main -n starter -d "make -C /tmp2 -f /active/startup.makefile"
 run('echo "all : ; echo start" > /active/startup.makefile')
 
 print('================================', file=sys.stderr)
