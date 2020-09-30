@@ -47,3 +47,20 @@ python3 -c "$(wget https://raw.githubusercontent.com/nphard001/starter/master/pk
 + `
 python3 -c "$(wget https://raw.githubusercontent.com/nphard001/starter/master/jcustom.py --no-cache --quiet -O -)"
 `
+
+## "ALL" for GPU server
++ `
+python3 -c "$(wget https://raw.githubusercontent.com/nphard001/starter/master/debian.py --no-cache --quiet -O -)"
+`
++ `
+python3 -c "$(wget https://raw.githubusercontent.com/nphard001/starter/master/ohmyzsh.py --no-cache --quiet -O -)"
+`
++ `
+python3 -c "$(wget https://raw.githubusercontent.com/nphard001/starter/master/pyenv.py --no-cache --quiet -O -)"
+`
++ `
+python3 -c "$(wget https://raw.githubusercontent.com/nphard001/starter/master/pkg368.py --no-cache --quiet -O -)"
+`
++ `
+python3 -c "$(wget https://raw.githubusercontent.com/nphard001/starter/master/pkg368_gpu.py --no-cache --quiet -O -)"
+`

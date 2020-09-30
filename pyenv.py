@@ -22,6 +22,12 @@ run('pyenv rehash')
 run('pyenv exec conda update conda -y')
 run('sudo ln -fvs ~/.pyenv/shims/* /usr/local/bin/')
 
+run('sudo mkdir /active')
+run('sudo mkdir /tmp2')
+run('sudo mkdir /dat')
+run('echo "/active" > ~/.pyenv/versions/miniconda3-4.3.30/lib/python3.6/site-packages/qtwu.pth')
+run('echo "all : ; echo start" > /active/startup.makefile')
+
 print('================================', file=sys.stderr)
 print('==============DONE==============', file=sys.stderr)
 print('================================', file=sys.stderr)
