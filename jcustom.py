@@ -3,14 +3,14 @@ import datetime
 import subprocess
 if os.system('ls /home')==0:  # linux
     _JupyterHome = lambda *args: os.path.abspath(os.path.join(
-        f'~/.jupyter', *args))
+        os.path.expanduser(f'~/.jupyter'), *args))
     _JupyterShare = lambda *args: os.path.abspath(os.path.join(
-        f'~/.local/share/jupyter/', *args))
+        os.path.expanduser(f'~/.local/share/jupyter/'), *args))
 else:  # osx
     _JupyterHome = lambda *args: os.path.abspath(os.path.join(
-        f'~/.jupyter', *args))
+        os.path.expanduser(f'~/.jupyter'), *args))
     _JupyterShare = lambda *args: os.path.abspath(os.path.join(
-        f'~/Library/Jupyter', *args))
+        os.path.expanduser(f'~/Library/Jupyter'), *args))
 def run(cmd):
     st = datetime.datetime.now().timestamp()
     print('[run]', cmd, file=sys.stderr)
