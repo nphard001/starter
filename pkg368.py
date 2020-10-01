@@ -26,6 +26,7 @@ run('git clone https://github.com/hoytech/vmtouch.git /tmp/build_vmtouch')
 run('cd /tmp/build_vmtouch && make && sudo make install')
 
 # CPU instance tools
+run('pip install requests --upgrade')
 run('pip install gdown tqdm')
 run('pip install seaborn sklearn numpy pandas scipy')
 run('pip install ipdb loguru psutil sympy')
