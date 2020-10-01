@@ -2,15 +2,15 @@ import os, sys, json, inspect
 import datetime
 import subprocess
 if os.system('ls /home')==0:  # linux
-    _JupyterHome = lambda *args: os.path.join(
-        f'~/.jupyter', *args)
-    _JupyterShare = lambda *args: os.path.join(
-        f'~/.local/share/jupyter/', *args)
+    _JupyterHome = lambda *args: os.path.abspath(os.path.join(
+        f'~/.jupyter', *args))
+    _JupyterShare = lambda *args: os.path.abspath(os.path.join(
+        f'~/.local/share/jupyter/', *args))
 else:  # osx
-    _JupyterHome = lambda *args: os.path.join(
-        f'~/.jupyter', *args)
-    _JupyterShare = lambda *args: os.path.join(
-        f'~/Library/Jupyter', *args)
+    _JupyterHome = lambda *args: os.path.abspath(os.path.join(
+        f'~/.jupyter', *args))
+    _JupyterShare = lambda *args: os.path.abspath(os.path.join(
+        f'~/Library/Jupyter', *args))
 def run(cmd):
     st = datetime.datetime.now().timestamp()
     print('[run]', cmd, file=sys.stderr)
@@ -29,6 +29,8 @@ run(f'pip install jupyter_contrib_nbextensions')
 # run(f'jupyter contrib nbextension install --user') # stuck, why?
 print('install done')
 # --------==== Javascript: sublime keymap, resize ====--------
+print("js path:", _JupyterHome("custom/custom.js"))
+print("access:", os.access(_JupyterHome("custom/custom.js"), os.R_OK))
 with open(_JupyterHome("custom/custom.js"), 'w') as f:
     f.write(r'''
 window.addEventListener("resize", myFunction);
