@@ -20,6 +20,8 @@ def run(cmd):
 
 # before custom (2019-04-19 09:52:00)
 run(f'mkdir -p '+_JupyterHome("custom"))
+run(f'touch '+_JupyterHome('custom/custom.js'))
+run(f'touch '+_JupyterHome('custom/custom.css'))
 run(f'mkdir -p '+_JupyterShare('nbextensions/snippets'))
 run(f'touch '+_JupyterShare('nbextensions/snippets/snippets.json'))
 run(f'pip install jupyter_nbextensions_configurator')
