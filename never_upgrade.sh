@@ -1,0 +1,12 @@
+systemctl stop apt-daily
+systemctl disable apt-daily
+systemctl mask apt-daily
+systemctl stop apt-daily.timer
+systemctl disable apt-daily.timer
+systemctl mask apt-daily.timer
+systemctl stop apt-daily-upgrade
+systemctl disable apt-daily-upgrade
+systemctl mask apt-daily-upgrade
+systemctl stop apt-daily-upgrade.timer
+systemctl disable apt-daily-upgrade.timer
+systemctl mask apt-daily-upgrade.timer
