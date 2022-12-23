@@ -24,3 +24,7 @@ sudo apt-get install -y libz-dev
 sudo apt-get install -y libreadline-dev
 sudo apt-get install -y libncurses5-dev
 sudo apt-get install -y libncursesw5-dev
+
+# oh my zsh
+sudo apt-get install -y zsh
+sh -c "$(wget https://raw.githubusercontent.com/nphard001/oh-my-zsh/master/tools/install.sh -O -)"

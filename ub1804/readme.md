@@ -1,10 +1,21 @@
-**basic ubuntu packages**
+# Step1: Basic Ubuntu Packages
 ```
 $(SSH_CPU0) -- 'bash -s' < /active/starter/ub1804/start.sh
 ```
+> test oh my zsh manually
 
-**oh my zsh**
+
+# Step2: Nopasswd & Useful Root Directory
 ```
-python3 -c "$(wget https://raw.githubusercontent.com/nphard001/starter/master/ohmyzsh.py --no-cache --quiet -O -)"
+$(SSH_CPU0) -- 'sudo bash -s' < /active/starter/ub1804/qtwu.sh
 ```
-*test it manually*
+
+
+# Step3: Python
+```
+$(SSH_CPU0) -- 'bash -s' < /active/starter/ub1804/python.sh
+```
+
+
+# Step4: Jupyter
+
