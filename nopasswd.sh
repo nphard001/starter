@@ -7,7 +7,5 @@ custom_dir()
   chown $NOPASSWD_USER /$1
 }
 custom_dir active
-custom_dir backup
 custom_dir dat
-custom_dir imp
 custom_dir tmp2
