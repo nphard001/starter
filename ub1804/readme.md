@@ -15,7 +15,15 @@ $(SSH_CPU0) -- 'sudo bash -s' < /active/starter/ub1804/qtwu.sh
 ```
 $(SSH_CPU0) -- 'bash -s' < /active/starter/ub1804/python.sh
 ```
+**NOTES**
++ pyenv without conda screwed for some reason, verify if everything is compiled
 
 
 # Step4: Jupyter
+```
+$(SSH_CPU0) -- 'bash -s' < /active/starter/ub1804/optional.sh
+```
+**NOTES**
++ make sure the port is allowed at the cloud
++ use a local library to generate hashed password
 

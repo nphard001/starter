@@ -24,6 +24,30 @@ sudo apt-get install -y libz-dev
 sudo apt-get install -y libreadline-dev
 sudo apt-get install -y libncurses5-dev
 sudo apt-get install -y libncursesw5-dev
+sudo apt-get install -y libsqlite3-dev
+sudo apt-get install -y liblzma-dev
+
+# pyenv stuff
+# source: https://stackoverflow.com/a/67853440
+sudo apt update
+sudo apt -y install \
+    build-essential \
+    curl \
+    libbz2-dev \
+    libffi-dev \
+    liblzma-dev \
+    libncursesw5-dev \
+    libreadline-dev \
+    libsqlite3-dev \
+    libssl-dev \
+    libxml2-dev \
+    libxmlsec1-dev \
+    llvm \
+    make \
+    tk-dev \
+    wget \
+    xz-utils \
+    zlib1g-dev
 
 # oh my zsh
 sudo apt-get install -y zsh
