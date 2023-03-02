@@ -1,29 +1,48 @@
-# Step1: Basic Ubuntu Packages
+
+# Main Setup
+## Step1: Basic Ubuntu Packages
 ```
-$(SSH_CPU0) -- 'bash -s' < /active/starter/ub1804/start.sh
+$(SSH_CMD) -- 'bash -s' < /active/starter/ub1804/start.sh
 ```
-> test oh my zsh manually
+**NOTES**
++ test oh my zsh manually
 
 
-# Step2: Nopasswd & Useful Root Directory
+## Step2: Nopasswd & Useful Root Directory
 ```
-$(SSH_CPU0) -- 'sudo bash -s' < /active/starter/ub1804/qtwu.sh
+$(SSH_CMD) -- 'sudo bash -s' < /active/starter/ub1804/qtwu.sh
 ```
+**NOTES**
++ `/etc/sudoers` is involved, *it may corrupt the entire OS*
 
 
-# Step3: Python
+## Step3: Python
 ```
-$(SSH_CPU0) -- 'bash -s' < /active/starter/ub1804/python.sh
+$(SSH_CMD) -- 'bash -s' < /active/starter/ub1804/python.sh
 ```
 **NOTES**
 + pyenv without conda screwed for some reason, verify if everything is compiled
++ `/active` is added under python default path
++ Install "common" packages yourself
 
 
-# Step4: Jupyter
+# Optional
+
+## Jupyter
 ```
-$(SSH_CPU0) -- 'bash -s' < /active/starter/ub1804/optional.sh
+$(SSH_CMD) -- 'bash -s' < /active/starter/ub1804/optional/jupyter.sh
 ```
 **NOTES**
-+ make sure the port is allowed at the cloud
-+ use a local library to generate hashed password
++ Make sure the port is allowed at the cloud
++ Use a local library to generate hashed password
++ Enable jupyter plugins manually
 
+
+## GPU
+```
+$(SSH_CMD) -- 'bash -s' < /active/starter/ub1804/optional/cuda.sh
+```
+**NOTES**
++ *Google cloud platform* only
++ It's simple, no UI
++ To test: `nvidia-smi`
