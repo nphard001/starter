@@ -19,11 +19,20 @@ pack1:
 packti packii packgti packgii packex: pack%:
 	@target_dir=$$(\
 		case "$*" in \
-			ti) echo "$(TXT2IMG)"; name="txt2img" ;; \
-			ii) echo "$(IMG2IMG)"; name="img2img" ;; \
-			gti) echo "$(GRIDTXT2IMG)"; name="txt2img-grid" ;; \
-			gii) echo "$(GRIDIMG2IMG)"; name="img2img-grid" ;; \
-			ex) echo "$(EXTRAIMG)"; name="extra" ;; \
+			ti) echo "$(TXT2IMG)" ;; \
+			ii) echo "$(IMG2IMG)" ;; \
+			gti) echo "$(GRIDTXT2IMG)" ;; \
+			gii) echo "$(GRIDIMG2IMG)" ;; \
+			ex) echo "$(EXTRAIMG)" ;; \
+		esac \
+	); \
+	name=$$(\
+		case "$*" in \
+			ti) echo "txt2img" ;; \
+			ii) echo "img2img" ;; \
+			gti) echo "txt2img-grid" ;; \
+			gii) echo "img2img-grid" ;; \
+			ex) echo "extra" ;; \
 		esac \
 	); \
 	echo "Packing code short for $*, name $$name, target directory is $$target_dir"; \
