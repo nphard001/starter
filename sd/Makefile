@@ -15,40 +15,48 @@ pack1:
 	mkdir -p $(SRCDIR) || true
 	mkdir -p $(PACK)
 	find $(SWAP) -name "*.png" -type f -print0 | xargs -0 mv -t $(PACK)/
-	@current_datetime=$$(date +"%Y%m%d%H%M"); \
+	@current_datetime=$$(TZ='Asia/Taipei' date +"%j%H%M"); \
 	cd $(PACK) && zip -r /active/zip/$$current_datetime-$(NAME).zip ./*
 
-packti packii packgti packgii packex: pack%:
+packti packii packtig packiig packex: pack%:
 	@target_dir=$$(\
 		case "$*" in \
 			ti) echo "$(TXT2IMG)" ;; \
 			ii) echo "$(IMG2IMG)" ;; \
-			gti) echo "$(GRIDTXT2IMG)" ;; \
-			gii) echo "$(GRIDIMG2IMG)" ;; \
+			tig) echo "$(GRIDTXT2IMG)" ;; \
+			iig) echo "$(GRIDIMG2IMG)" ;; \
 			ex) echo "$(EXTRAIMG)" ;; \
 		esac \
 	); \
 	name=$$(\
 		case "$*" in \
-			ti) echo "txt2img" ;; \
-			ii) echo "img2img" ;; \
-			gti) echo "txt2img-grid" ;; \
-			gii) echo "img2img-grid" ;; \
+			ti) echo "txt" ;; \
+			ii) echo "img" ;; \
+			tig) echo "txt-grid" ;; \
+			iig) echo "img-grid" ;; \
 			ex) echo "extra" ;; \
 		esac \
 	); \
 	echo "Packing code short for $*, name $$name, target directory is $$target_dir"; \
 	$(MAKE) -e pack1 NAME=$$name SRCDIR=$$target_dir
 
+zip2:
+	mkdir -p /active/zip || true
+	@current_datetime=$$(TZ='Asia/Taipei' date +"%Y%m%d%H%M"); \
+	mv /active/zip /active/zip-$$current_datetime
+	mkdir -p /active/zip || true
+
+
 URL1_anythingQing = https://drive.google.com/file/d/1ewTAAcPkyZoVV9-n0sHf7ODZ-9ejWx9z/view?usp=drive_link
 URL3_realisticVision = https://drive.google.com/file/d/1HcLe4nNAkw8I_5v6LkKns8m7U63NXLRn/view?usp=drive_link
+URL4_movie = https://drive.google.com/file/d/16Vi_cNM4w_g16HWr9gqSAtLkZtNA1B-N/view?usp=drive_link
 
-modelAQ modelSD modelRV: model%:
+modelAQ modelRV modelMV: model%:
 	@URL=$$(\
 		case "$*" in \
 			AQ) echo "$(URL1_anythingQing)" ;; \
-			SD) echo "$(URL2_stablediffusion2)" ;; \
 			RV) echo "$(URL3_realisticVision)" ;; \
+			MV) echo "$(URL4_movie)" ;; \
 		esac \
 	); \
 	echo "Downloading from $$URL"; \
