@@ -1,3 +1,5 @@
+mkdir -p /content/stable-diffusion-webui/models/Stable-diffusion || true
+mkdir -p /content/stable-diffusion-webui/extensions || true
 mkdir -p /active/zip
 mkdir -p /active/tmp
 ln -s /content/stable-diffusion-webui /active/sd

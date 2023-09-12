@@ -12,7 +12,6 @@ SWAP = /active/tmp/swap
 PACK = /active/tmp/pack
 
 start:
-	mkdir -p /content/stable-diffusion-webui/models/Stable-diffusion || true
 	pip install gdown
 	RUNBG=1 $(MAKE) modelURP
 	RUNBG=1 $(MAKE) modelAQ
