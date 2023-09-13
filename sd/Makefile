@@ -12,11 +12,17 @@ SWAP = /active/tmp/swap
 PACK = /active/tmp/pack
 
 start:
+	mkdir -p /active/zip || true
+	mkdir -p /active/tmp || true
+	mkdir -p /active/upload || true
 	mkdir -p /content/stable-diffusion-webui/models/Stable-diffusion || true
 	mkdir -p /content/stable-diffusion-webui/extensions || true
 	ln -s /content/stable-diffusion-webui /active/sd || true
-	pip install gdown
+	pip install gdown fire PyDrive loguru
 	$(MAKE) downloads
+
+upload:
+	python /active/upload.py
 
 pack1:
 	mkdir -p /active/zip || true
