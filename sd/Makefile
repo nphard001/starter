@@ -76,7 +76,7 @@ include data.makefile
 
 # example: RUNBG=1 $(MAKE) modelMV 
 # Generalized download target
-gdown_model:
+model_gdown:
 	@actual_url=$(URL_$(MODEL)); \
 	echo "Downloading from $$actual_url"; \
 	if [ "$${RUNBG}" = "1" ]; then \
@@ -85,4 +85,13 @@ gdown_model:
 		gdown --fuzzy $$actual_url -O /content/stable-diffusion-webui/models/Stable-diffusion/; \
 	fi
 
+# make ext_git URL=https://github.com/Gourieff/sd-webui-reactor
+ext_git:
+	@if [ -z "$(URL)" ]; then \
+		echo "URL must be specified."; \
+		exit 1; \
+	fi
+	@repo_name=$$(basename $(URL) .git); \
+		echo "Cloning $$repo_name..."; \
+		git clone $(URL) /content/stable-diffusion-webui/extensions/$$repo_name
 
