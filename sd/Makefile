@@ -12,8 +12,11 @@ SWAP = /active/tmp/swap
 PACK = /active/tmp/pack
 
 start:
+	mkdir -p /content/stable-diffusion-webui/models/Stable-diffusion || true
+	mkdir -p /content/stable-diffusion-webui/extensions || true
+	ln -s /content/stable-diffusion-webui /active/sd || true
 	pip install gdown
-	RUNBG=1 $(MAKE) -j8 modelAQ modelRV modelURP modelCO modelAF
+	$(MAKE) downloads
 
 pack1:
 	mkdir -p /active/zip || true
@@ -69,32 +72,17 @@ out2:
 	@echo "Rebuilding empty directories under /active/sd/outputs"; \
 	find /active/archive/outputs-$$current_datetime -type d -exec bash -c 'mkdir -p "/active/sd/outputs/$$(realpath --relative-to=/active/archive/outputs-$$current_datetime {})"' \;
 
-
-URL1_anythingQing = https://drive.google.com/file/d/1ewTAAcPkyZoVV9-n0sHf7ODZ-9ejWx9z/view?usp=drive_link
-URL3_realisticVision = https://drive.google.com/file/d/1HcLe4nNAkw8I_5v6LkKns8m7U63NXLRn/view?usp=drive_link
-URL4_movie = https://drive.google.com/file/d/16Vi_cNM4w_g16HWr9gqSAtLkZtNA1B-N/view?usp=drive_link
-URL5_URP = https://drive.google.com/file/d/1-ZjJ-jcZbuzcw2QpC8uNKOx9kOcv6yb5/view?usp=drive_link
-URL6 = https://drive.google.com/file/d/1-HZEXDICJbCfAGbrw4oBgw6ZxKGFnor7/view?usp=drive_link
-URL7 = https://drive.google.com/file/d/1mlI4Pz60zS-I5YLfRWgM9mzQqK9-9tU8/view?usp=drive_link
+include data.makefile
 
 # example: RUNBG=1 $(MAKE) modelMV 
-# RUNBG=1 make modelMV modelRV
-modelAQ modelRV modelMV modelURP modelCO modelAF: model%:
-	@URL=$$(\
-		case "$*" in \
-			AQ) echo "$(URL1_anythingQing)" ;; \
-			RV) echo "$(URL3_realisticVision)" ;; \
-			MV) echo "$(URL4_movie)" ;; \
-			URP) echo "$(URL5_URP)" ;; \
-			CO) echo "$(URL6)" ;; \
-			AF) echo "$(URL7)" ;; \
-		esac \
-	); \
-	echo "Downloading from $$URL"; \
+# Generalized download target
+gdown_model:
+	@actual_url=$(URL_$(MODEL)); \
+	echo "Downloading from $$actual_url"; \
 	if [ "$${RUNBG}" = "1" ]; then \
-		gdown --fuzzy $$URL -O /content/stable-diffusion-webui/models/Stable-diffusion/ & \
+		gdown --fuzzy $$actual_url -O /content/stable-diffusion-webui/models/Stable-diffusion/ & \
 	else \
-		gdown --fuzzy $$URL -O /content/stable-diffusion-webui/models/Stable-diffusion/; \
+		gdown --fuzzy $$actual_url -O /content/stable-diffusion-webui/models/Stable-diffusion/; \
 	fi
 
 
