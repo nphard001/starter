@@ -21,6 +21,7 @@ start:
 	pip install gdown fire PyDrive loguru || true
 	$(MAKE) downloads || true
 
+.PHONY: upload
 upload:
 	python /active/upload.py
 
