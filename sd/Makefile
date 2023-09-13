@@ -18,8 +18,8 @@ start:
 	mkdir -p /content/stable-diffusion-webui/models/Stable-diffusion || true
 	mkdir -p /content/stable-diffusion-webui/extensions || true
 	ln -s /content/stable-diffusion-webui /active/sd || true
-	pip install gdown fire PyDrive loguru
-	$(MAKE) downloads
+	pip install gdown fire PyDrive loguru || true
+	$(MAKE) downloads || true
 
 upload:
 	python /active/upload.py
