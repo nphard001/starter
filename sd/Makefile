@@ -13,8 +13,7 @@ PACK = /active/tmp/pack
 
 start:
 	pip install gdown
-	RUNBG=1 $(MAKE) modelURP
-	RUNBG=1 $(MAKE) modelAQ
+	RUNBG=1 $(MAKE) -j8 modelAQ modelRV modelURP modelCO modelAF
 
 pack1:
 	mkdir -p /active/zip || true
@@ -54,24 +53,41 @@ packti packii packtig packiig packex: pack%:
 
 zip2:
 	mkdir -p /active/zip || true
+	mkdir -p /active/archive || true
 	@current_datetime=$$(TZ='Asia/Taipei' date +"%Y%m%d%H%M"); \
-	mv /active/zip /active/zip-$$current_datetime
+	mv /active/zip /active/archive/zip-$$current_datetime
 	mkdir -p /active/zip || true
+
+
+out2:
+	mkdir -p /active/archive || true
+
+	@current_datetime=$$(TZ='Asia/Taipei' date +"%Y%m%d%H%M"); \
+	echo "Moving /active/sd/outputs to /active/archive/outputs-$$current_datetime"; \
+	mv /active/sd/outputs /active/archive/outputs-$$current_datetime; \
+	
+	@echo "Rebuilding empty directories under /active/sd/outputs"; \
+	find /active/archive/outputs-$$current_datetime -type d -exec bash -c 'mkdir -p "/active/sd/outputs/$$(realpath --relative-to=/active/archive/outputs-$$current_datetime {})"' \;
 
 
 URL1_anythingQing = https://drive.google.com/file/d/1ewTAAcPkyZoVV9-n0sHf7ODZ-9ejWx9z/view?usp=drive_link
 URL3_realisticVision = https://drive.google.com/file/d/1HcLe4nNAkw8I_5v6LkKns8m7U63NXLRn/view?usp=drive_link
 URL4_movie = https://drive.google.com/file/d/16Vi_cNM4w_g16HWr9gqSAtLkZtNA1B-N/view?usp=drive_link
 URL5_URP = https://drive.google.com/file/d/1-ZjJ-jcZbuzcw2QpC8uNKOx9kOcv6yb5/view?usp=drive_link
+URL6 = https://drive.google.com/file/d/1-HZEXDICJbCfAGbrw4oBgw6ZxKGFnor7/view?usp=drive_link
+URL7 = https://drive.google.com/file/d/1mlI4Pz60zS-I5YLfRWgM9mzQqK9-9tU8/view?usp=drive_link
 
-# example: RUNBG=1 $(MAKE) modelMV
-modelAQ modelRV modelMV modelURP: model%:
+# example: RUNBG=1 $(MAKE) modelMV 
+# RUNBG=1 make modelMV modelRV
+modelAQ modelRV modelMV modelURP modelCO modelAF: model%:
 	@URL=$$(\
 		case "$*" in \
 			AQ) echo "$(URL1_anythingQing)" ;; \
 			RV) echo "$(URL3_realisticVision)" ;; \
 			MV) echo "$(URL4_movie)" ;; \
 			URP) echo "$(URL5_URP)" ;; \
+			CO) echo "$(URL6)" ;; \
+			AF) echo "$(URL7)" ;; \
 		esac \
 	); \
 	echo "Downloading from $$URL"; \
