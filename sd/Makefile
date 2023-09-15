@@ -36,7 +36,7 @@ pack1:
 	@PTYPE=$${PTYPE:-png}; \
 	find $(SWAP) -name "*.$$PTYPE" -type f -print0 | xargs -0 mv -t $(PACK)/
 
-	@current_datetime=$$(TZ='Asia/Taipei' date +"%j%H%M"); \
+	@current_datetime=$$(TZ='Asia/Taipei' date +"%m%d%H%M"); \
 	cd $(PACK) && zip -r /active/zip/$$current_datetime-$(NAME).zip ./*
 
 packti packii packtig packiig packex: pack%:
