@@ -7,6 +7,7 @@ IMG2IMG = /active/sd/outputs/img2img-images
 GRIDTXT2IMG = /active/sd/outputs/txt2img-grids
 GRIDIMG2IMG = /active/sd/outputs/img2img-grids
 EXTRAIMG = /active/sd/outputs/extras-images
+DIR_MODELS = /active/sd/models/Stable-diffusion
 
 SWAP = /active/tmp/swap
 PACK = /active/tmp/pack
@@ -33,11 +34,11 @@ pack1:
 	mkdir -p $(SRCDIR) || true
 	mkdir -p $(PACK)
 
-	@PTYPE=$${PTYPE:-png}; \
-	find $(SWAP) -name "*.$$PTYPE" -type f -print0 | xargs -0 mv -t $(PACK)/
+	file_count=$$(find $(SWAP) \( -name "*.png" -o -name "*.jpg" \) -type f | wc -l); \
+	find $(SWAP) \( -name "*.png" -o -name "*.jpg" \) -type f -print0 | xargs -0 mv -t $(PACK)/; \
+	current_datetime=$$(TZ='Asia/Taipei' date +"%m%d%H%M"); \
+	cd $(PACK) && zip -r /active/zip/$$current_datetime-$(NAME)-$$file_count.zip ./*
 
-	@current_datetime=$$(TZ='Asia/Taipei' date +"%m%d%H%M"); \
-	cd $(PACK) && zip -r /active/zip/$$current_datetime-$(NAME).zip ./*
 
 packti packii packtig packiig packex: pack%:
 	@target_dir=$$(\
@@ -71,34 +72,42 @@ zip2:
 
 out2:
 	mkdir -p /active/archive || true
+	mkdir -p /active/sd/outputs || true
+
+	mv /active/sd/outputs /active/archive/outputs
+
+	# Recover directories from /active/archive/outputs
+	find /active/archive/outputs -type d -exec bash -c 'mkdir -p "/active/sd/$$(realpath --relative-to=/active/archive {})"' \;
 
 	@current_datetime=$$(TZ='Asia/Taipei' date +"%Y%m%d%H%M"); \
-	echo "Moving /active/sd/outputs to /active/archive/outputs-$$current_datetime"; \
-	mv /active/sd/outputs /active/archive/outputs-$$current_datetime; \
-	
-	@echo "Rebuilding empty directories under /active/sd/outputs"; \
-	find /active/archive/outputs-$$current_datetime -type d -exec bash -c 'mkdir -p "/active/sd/outputs/$$(realpath --relative-to=/active/archive/outputs-$$current_datetime {})"' \;
+	mv /active/archive/outputs /active/archive/outputs-$$current_datetime
 
 include data.makefile
 
 # example: RUNBG=1 $(MAKE) modelMV 
-# Generalized download target
 model_gdown:
-	@actual_url=$(URL_$(MODEL)); \
-	echo "Downloading from $$actual_url"; \
-	if [ "$${RUNBG}" = "1" ]; then \
-		gdown --fuzzy $$actual_url -O /content/stable-diffusion-webui/models/Stable-diffusion/ & \
+	$(MAKE) download_gdown URL=$(URL) TARGET=$(DIR_MODELS)
+model_aria2c:
+	$(MAKE) download_aria2c URL=$(URL) TARGET=$(DIR_MODELS) FNAME=$(FNAME)
+
+# Generalized download target
+download_gdown:
+	@if [ "$${RUNBG}" = "1" ]; then \
+		gdown --fuzzy $(URL) -O $(realpath $(TARGET))/ & \
 	else \
-		gdown --fuzzy $$actual_url -O /content/stable-diffusion-webui/models/Stable-diffusion/; \
+		gdown --fuzzy $(URL) -O $(realpath $(TARGET))/ ; \
 	fi
+
+download_aria2c:
+	@if [ "$${RUNBG}" = "1" ]; then \
+		aria2c --console-log-level=error -c -x 16 -s 16 -k 1M $(URL) -d $(realpath $(TARGET)) -o $(FNAME) & \
+	else \
+		aria2c --console-log-level=error -c -x 16 -s 16 -k 1M $(URL) -d $(realpath $(TARGET)) -o $(FNAME) ; \
+	fi
+
 
 # make ext_git URL=https://github.com/Gourieff/sd-webui-reactor
 ext_git:
-	@if [ -z "$(URL)" ]; then \
-		echo "URL must be specified."; \
-		exit 1; \
-	fi
 	@repo_name=$$(basename $(URL) .git); \
 		echo "Cloning $$repo_name..."; \
 		git clone $(URL) /content/stable-diffusion-webui/extensions/$$repo_name
-
