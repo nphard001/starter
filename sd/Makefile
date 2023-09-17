@@ -26,6 +26,11 @@ start:
 upload:
 	python /active/upload.py
 
+# make emb EMB=swappedFACEn8v4
+emb:
+	find /active/sd/textual_inversion/ -type f -name '$(EMB)-*.pt' -exec cp {} /active/sd/embeddings/ \;
+
+
 pack1:
 	mkdir -p /active/zip || true
 	mkdir -p /active/tmp || true
