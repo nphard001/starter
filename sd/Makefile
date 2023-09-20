@@ -12,19 +12,42 @@ DIR_MODELS = /active/sd/models/Stable-diffusion
 SWAP = /active/tmp/swap
 PACK = /active/tmp/pack
 
+# NOTES
+# ln -s /content/drive/MyDrive/Codrive /active/codrive || true
 start:
 	mkdir -p /active/zip || true
 	mkdir -p /active/tmp || true
-	mkdir -p /active/upload || true
+	mkdir -p /active/gout || true
+	mkdir -p /active/gin || true
 	mkdir -p /content/stable-diffusion-webui/models/Stable-diffusion || true
 	mkdir -p /content/stable-diffusion-webui/extensions || true
 	ln -s /content/stable-diffusion-webui /active/sd || true
 	pip install gdown fire PyDrive loguru || true
 	$(MAKE) downloads || true
 
-.PHONY: upload
-upload:
-	python /active/upload.py
+.PHONY: gout
+gout:
+	@if [ ! -d "/active/codrive" ]; then \
+		echo "Error: /active/codrive does not exist. NFS not mounted."; \
+		exit 1; \
+	fi
+	rsync -avhP /active/gout/ /active/codrive/output/
+
+.PHONY: graw
+graw:
+	@if [ ! -d "/active/codrive" ]; then \
+		echo "Error: /active/codrive does not exist. NFS not mounted."; \
+		exit 1; \
+	fi
+	rsync -avzhP /active/sd/outputs/ /active/codrive/output/raw/
+
+.PHONY: gin
+gin:
+	@if [ ! -d "/active/codrive" ]; then \
+		echo "Error: /active/codrive does not exist. NFS not mounted."; \
+		exit 1; \
+	fi
+	rsync -avhP /active/codrive/input/ /active/gin/
 
 # make emb EMB=swappedFACEn8v4
 emb:
