@@ -139,3 +139,12 @@ ext_git:
 	@repo_name=$$(basename $(URL) .git); \
 		echo "Cloning $$repo_name..."; \
 		git clone $(URL) /content/stable-diffusion-webui/extensions/$$repo_name
+
+ext:
+	@repo_name=$$(basename $(URL) .git); \
+		echo "Cloning $$repo_name..."; \
+		if [ -z "$(BV)" ]; then \
+			git clone $(URL) /content/stable-diffusion-webui/extensions/$$repo_name; \
+		else \
+			git clone -b $(BV) $(URL) /content/stable-diffusion-webui/extensions/$$repo_name; \
+		fi
