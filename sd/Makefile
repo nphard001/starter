@@ -41,6 +41,10 @@ graw:
 	fi
 	rsync -avzhP /active/sd/outputs/ /active/codrive/output/raw/
 
+.PHONY: graw9
+graw9:
+	watch -n 9 $(MAKE) graw
+
 .PHONY: gin
 gin:
 	@if [ ! -d "/active/codrive" ]; then \
@@ -53,6 +57,9 @@ gin:
 emb:
 	find /active/sd/textual_inversion/ -type f -name '$(EMB)-*.pt' -exec cp {} /active/sd/embeddings/ \;
 
+.PHONY: cnet
+cnet:
+	sh /active/controlNet.sh
 
 pack1:
 	mkdir -p /active/zip || true
