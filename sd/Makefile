@@ -31,7 +31,14 @@ gout:
 		echo "Error: /active/codrive does not exist. NFS not mounted."; \
 		exit 1; \
 	fi
-	rsync -avhP /active/gout/ /active/codrive/output/
+	rsync -avhPL /active/gout/ /active/codrive/output/
+# Link counts
+
+.PHONY: link
+link:
+	@mkdir -p /active/gout || true
+	ln -s $(X) /active/gout/$(notdir $(X))
+
 
 .PHONY: graw
 graw:
