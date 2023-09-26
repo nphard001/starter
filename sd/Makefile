@@ -48,9 +48,6 @@ graw:
 	fi
 	rsync -avzhP /active/sd/outputs/ /active/codrive/output/raw/
 
-.PHONY: graw9
-graw9:
-	watch -n 9 $(MAKE) graw
 
 .PHONY: gin
 gin:
@@ -59,6 +56,17 @@ gin:
 		exit 1; \
 	fi
 	rsync -avhP /active/codrive/input/ /active/gin/
+
+.PHONY: graw9 gin9 gout9
+
+graw9:
+	watch -n 9 $(MAKE) graw
+
+gin9:
+	watch -n 9 $(MAKE) gin
+
+gout9:
+	watch -n 9 $(MAKE) gout
 
 # make emb EMB=swappedFACEn8v4
 emb:
